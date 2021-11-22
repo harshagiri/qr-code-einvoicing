@@ -1,12 +1,5 @@
 package org.practo.insta.einvoicing.generator;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Iterator;
@@ -69,7 +62,6 @@ public class ZatcaTLVQRCodeGenerator {
 		return generateBase64(finalBase64EncodedString);
 	}
 
-
 	/**
 	 * Method to check if the input string is a hexadecimal string or not
 	 * 
@@ -95,6 +87,7 @@ public class ZatcaTLVQRCodeGenerator {
 		}
 		return byteEquiHexString;
 	}
+	
 	/**
 	 * Converts each method to Base64 using java.util.Base64 accepting hexString
 	 * @param hexString
@@ -103,6 +96,7 @@ public class ZatcaTLVQRCodeGenerator {
 	private String generateBase64(String hexString) {
 		String returnString = null;
 		if(isHexadecimal(hexString)) {
+			//Using default UTF-8 encoding
 			returnString = Base64.getEncoder().encodeToString(convertHexStringToHexByte(hexString));
 		}
 		return returnString;
